@@ -2,12 +2,14 @@
 using System.Security.AccessControl;
 
 namespace NumbersGame;
+//Rasmus Andersen SUT25
 
 class Program
 {
-    private static bool CheckGuess(int anwser, int AI_anwser)
+    //method to check if your anwser equal to CPU_anwser
+    private static bool CheckGuess(int anwser, int CPU_anwser)
     {
-        return anwser == AI_anwser;
+        return anwser == CPU_anwser;
     }
 
     static void Main(string[] args)
@@ -17,20 +19,22 @@ class Program
 
 
 
-
+        
         while (PlayAgain)
         {
-            int AI_anwser = rnd.Next(1, 20);
+            //makes cpu anwser to a number between 1-20 randomly
+            int CPU_anwser = rnd.Next(1, 20);
             int attempts = 5;
             bool IsCorrect = false;
             int anwser;
 
             Console.WriteLine("Välkommen! Jag tänker på ett nummer. Kan du gissa vilket? Du får fem försök.");
 
+            //checks if anwser is correct and if you have attempts
             while (!IsCorrect && attempts > 0)
             {
                 anwser = Convert.ToInt32(Console.ReadLine());
-                IsCorrect = CheckGuess(anwser, AI_anwser);
+                IsCorrect = CheckGuess(anwser, CPU_anwser);
 
                 if (IsCorrect)
                 {
@@ -40,8 +44,8 @@ class Program
                 {
 
                     attempts--;
-
-                    if (anwser < AI_anwser)
+                    //tells you if your higher or lower than the CPU anwser
+                    if (anwser < CPU_anwser)
                     {
                         Console.WriteLine("För lågt du har " + attempts + " gissningar kvar!");
                     }
@@ -52,13 +56,14 @@ class Program
                 }
 
             }
-
+            //if you lose this will print out the CPUs anwser
             if (!IsCorrect)
             {
                 Console.WriteLine("Tyvärr du lyckades inte gissa talet på fem försök!");
-                Console.WriteLine("Du förlorade. Rätt svar var " + AI_anwser);
+                Console.WriteLine("Du förlorade. Rätt svar var " + CPU_anwser);
             }
 
+            //to see if you want to play again
             Console.WriteLine("Vill du spela igen? ja/nej");
             string input = Console.ReadLine().ToLower();
 
