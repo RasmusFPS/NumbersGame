@@ -23,7 +23,7 @@ class Program
         while (PlayAgain)
         {
             //makes cpu anwser to a number between 1-20 randomly
-            int CPU_anwser = rnd.Next(1, 20);
+            int CPU_anwser = rnd.Next(1, 21);
             int attempts = 5;
             bool IsCorrect = false;
             int anwser;
